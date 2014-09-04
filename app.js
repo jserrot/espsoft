@@ -314,9 +314,17 @@ app.get('/director/changePass', isLoggedIn, function(req, res){
 // create
 app.get('/director/:id/create', isLoggedIn, function(req, res){
     Director.findOne({programa_id:req.programa.id}, function(err, d){
-        var bite=false;
-        if(d) bite=true;
-        res.render('director/create', {programa:req.programa, bite:bite});
+        if(d){
+            if(d.privilegio == 1){
+                res.render('director/error', {message:'Usted no puede cambiar este director, este es el administrador. osea es ustede mismo.'});
+            }else{
+                var bite=false;
+                if(d) bite=true;
+                res.render('director/create', {programa:req.programa, bite:bite});
+            }
+        }
+
+
     });
 
 });
