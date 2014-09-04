@@ -1,0 +1,61 @@
+
+html,body{
+    padding: 0px;
+    margin: 0;
+}
+.text-bg{
+    color: #f5f5f5;
+    text-shadow: 2px 2px 2px #000000;
+}
+.bg{
+    background-color: #F9F9F9;
+}
+.bg-black{
+    background-color: #FFFFFF;
+}
+.fix-top{
+    margin-top: 56px;
+}
+button{
+    border: 0;
+}
+.text-size{
+    font-size: 30pt;
+}
+.color-success{
+    background-color: #28b62c;
+}
+.margin-left-1{
+    margin-left: 14px;
+}
+.margin-right-1{
+    margin-right: 30px;
+}
+.margin-auto{
+    width: 50%;
+    margin: 0 auto;
+}
+.error{
+    font-size: 80pt;
+    font-style: italic;
+    color:#dca7a7;
+}
+.margin-botton{
+    margin-bottom: 40px;
+}
+.scroll-list{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 200px;
+}
+.scroll-list-x{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 500px;
+}
+.badge-fix{
+    margin-top: 10px;
+}
+.font-size-fix-label{
+    font-size: 9pt;
+}

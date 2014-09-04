@@ -1,0 +1,24 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa.nombre}
+h2 postgrado: #{postgrado.nombre}
+br
+h3 Creador de cohortes: paso #1 Datos principales
+form(method="POST", action="/cohorte/selectdates")
+    input(type="hidden", name="programa", value="#{programa.nombre}")
+    input(type="hidden", name="postgradoid", value="#{postgrado.id}")
+    input(type="hidden", name="postgradon", value="#{postgrado.nombre}")
+    p Digite el codigo de resolucion de la cohorte a crear
+        input(type="text", name="resolucion", placeholder="# resolucion", required)
+    p asignacion de un nombre del cual se va a diferenciar la cohorte
+        input(type="text", name="nombre", placeholder="palabras clave", required)
+    legend
+        | Selecciona el pensum que regira esta cohorte
+        select(name="pensum", required)
+            each pensum in pensums
+                option(value="#{pensum.id}") #{pensum.nombre}
+    p: button(type="submit") Siguiente paso 2 &#x2794;
+br
+a(href="/postgrado/#{postgrado.id}") &#9166;Regresar
+br
+

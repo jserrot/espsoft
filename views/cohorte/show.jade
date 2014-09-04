@@ -1,0 +1,167 @@
+//
+   Created by fabiancote on 7/18/14.
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+    .row.bg-black.fix-top.margin-botton
+        .container
+            .col-lg-3
+                h2.text-center
+                    span.lead #{programa.nombre}
+                p.text-center
+                    span.label.label-info
+                        i.fa.fa-bookmark
+                        | &nbsp; Programa
+
+                legend
+
+                h3.text-center
+                    span.lead #{postgrado.nombre}
+                p.text-center
+                    span.label.label-default
+                        i.fa.fa-mortar-board
+                        | &nbsp; Postgrado
+                p.text-center
+                    a(href="/postgrado/#{postgrado.id}").btn.btn-default.btn-xs
+                        i.fa.fa-chevron-circle-left
+                        | &nbsp; volver al postgrado
+            .col-lg-6
+                h2.text-center
+                    span #{cohorte.nombre}
+                    br
+                p.text-center
+                    span.label.label-default
+                        i.fa.fa-gavel
+                        | &nbsp; Cohorte
+                table.table
+                    tbody
+                        tr
+                            td
+                                p.text-center Estudiantes
+                                h2.text-center
+                                    span.label.label-primary.text-size #{numes}
+            .col-lg-3
+                h2.text-center
+                    span.lead
+                        i.fa.fa-info-circle
+                        | &nbsp; Informacion
+                .well.well-lg
+                    p
+                        strong Resolucion de la cohorte
+                        br
+                        span.text-muted #{cohorte.resolucion}
+                    p
+                        strong Link del material
+                        br
+                        span.text-muted #{cohorte.link}
+                    p.text-center
+                        a(href="/cohorte/#{cohorte.id}/edit").btn.btn-info.btn-xs
+                            i.fa.fa-eye
+                            | &nbsp; Ver Informacion
+
+    legend
+
+    .row
+        .container
+            .col-lg-9
+                .panel.panel-default
+                    .panel-heading
+                        span.badge.pull-right.badge-fix #{numes}
+                        h5
+                            i.fa.fa-users
+                            | &nbsp; Estudiantes Registrados
+                    .panel-body
+                        p.lead Lista de estudiantes que se encuentran registrados en la cohorte
+                        .scroll-list-x
+                            -if (estudiantes[0]){
+                                table.table.table-hover.table-striped
+                                    thead
+                                        tr
+                                            th(width="8"): p.text-center #
+                                            th(width="54%"): p.text-center Nombre
+                                            th(width="20%"): p.text-center Codigo
+                                            th(width="18%"): p.text-center Accion
+                                    -count=1
+                                    each estudiante in estudiantes
+                                        tr
+                                            td(width="8")
+                                                h4.text-center
+                                                    span.badge #{count}
+
+                                            td(width="54%")
+                                                h4 #{estudiante.nombre}
+                                            td(width="20%")
+                                                h5.text-center
+                                                    span.label.label-danger.font-size-fix-label #{estudiante.codigo}
+                                            td(width="18%")
+                                                h5.text-center
+                                                    a(href="/estudiante/#{estudiante.id}").btn.btn-default.btn-xs
+                                                        i.fa.fa-search
+                                                        | &nbsp; Ver Estudiante
+                                        -count++
+                            -}else{
+                                p.text-center.text-info No hay estudiantes registrados
+                            -}
+            .col-lg-3
+                .panel.panel-default
+                    .panel-heading
+
+                        h5
+                            i.fa.fa-reorder
+                            | &nbsp; Nivel del postgrado
+                    .panel-body
+                        p.lead Niveles del Postgrado
+                        span.text-muted el nivel en el que se encuentra el postgrado esta distinguido por el color naranja.
+                        table.table
+                            thead
+                                tr
+                                    -for(i=1; nivel.nivel >= i; i++){
+
+                                        th
+                                            h3.text-center
+                                                -if (i < cohorte.nivel){
+                                                    span.btn.btn-default.disabled.btn-xs
+                                                        |Nivel
+                                                        br
+                                                        |#{i}
+                                                -}
+                                                -if (i == cohorte.nivel){
+                                                    span.btn.btn-warning.btn-sm.btn-xs
+                                                        |Nivel
+                                                        br
+                                                        |#{i}
+                                                -}else{
+                                                    span.btn.btn-default.btn-sm.btn-xs
+                                                        |Nivel
+                                                        br
+                                                        |#{i}
+                                                -}
+
+
+                                    -}
+                        -if (nivel.nivel > cohorte.nivel){
+                            p.text-center
+                                a(href="#").btn.btn-default.btn-xs
+                                    i.fa.fa-retweet
+                                    | &nbsp; Promover de nivel
+                        -}
+                        br
+

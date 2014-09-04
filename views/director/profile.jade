@@ -1,0 +1,160 @@
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+    .row.bg-black.fix-top
+        .container
+            .col-lg-3
+                h3.text-center Bienvenido/a
+                p.text-center.text-muted #{datos.nombres} #{datos.apellidos}
+                p.text-center
+                    span.label.label-default
+                        i.fa.fa-user
+                        -if(user.privilegio == 1){
+                            | &nbsp; Administrador
+                        -}else{
+                            | &nbsp; Director
+                        -}
+                legend
+                table.table.table-striped.table-hover
+                    thead
+                        tr
+                            th.text-center #
+                            th.text-center Programa
+                            th.text-center Acción
+                    tbody
+                        - var x=1
+                        each programa in programas
+                            -if (x==1){
+                                tr.info
+                                    td: h5=x
+                                    td
+                                        h5 #{programa.nombre}
+                                    td
+                                        a(href="/programa/#{programa.id}", title="Administrar").btn.btn-default: i.fa.fa-cog
+                            -}else{
+                                tr
+                                    td: h5=x
+                                    td
+                                        h5 #{programa.nombre}
+                                    td
+                                        a(href="/programa/#{programa.id}", title="Administrar").btn.btn-default: i.fa.fa-cog
+                            -}
+
+
+                            -x++
+                        -if (user.privilegio == 1){
+                            tr
+                                td: h5=x
+                                td: h5 Administrador
+                                td
+                                    a(href="/programa", title="Administrar").btn.btn-default: i.fa.fa-cog
+                        -}
+
+
+
+            .col-lg-6
+                h2 Programa #{programa.nombre}
+                    a(href="/programa/#{programa.id}/edit"): h6.text-primary: i.fa.fa-edit | Editar
+                table.table
+                    tbody
+                        tr
+                            td
+                                p.text-center Postgrados
+                                h2.text-center
+                                    span.label.label-primary.text-size #{numpostgrados}
+                                br
+                                p.text-center
+                                    a(href="/postgrado/#{programa.id}/new").btn.btn-info.btn-sm
+                                        i.fa.fa-plus-square
+                                        | &nbsp; Registrar nuevo
+
+            .col-lg-3
+                h2.text-center
+
+                    span.lead
+                        i.fa.fa-info-circle
+                        |&nbsp; Informacion
+                .well.well-lg
+
+                    p.margin-left-1
+
+                        strong:i.fa.fa-shield
+                        span.text-muted &nbsp; #{datos.nombres} #{datos.apellidos}
+                    p.margin-left-1
+                        strong:i.fa.fa-chevron-right
+                            strong |&nbsp; Documento
+                        br
+                        span.text-muted &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{datos.tipo_documento}
+                        br
+                        span.text-muted &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{datos.documento}
+                    p.margin-left-1
+                        strong:i.fa.fa-paper-plane-o
+                        span.text-muted &nbsp; #{datos.email}
+                    p.margin-left-1
+                        strong:i.fa.fa-phone-square
+                        span.text-muted &nbsp; #{datos.telefono}
+
+    legend
+
+    .row
+        .container
+
+            .panel.panel-default
+                .panel-heading
+                    span.badge.pull-right.badge-fix #{numpostgrados}
+                    h5
+                        i.fa.fa-mortar-board
+                        | &nbsp; Postgrados Registrados
+                .panel-body
+                    table.table.table-striped.table-hover
+                        thead
+                            tr
+                                th(width="12%"): p.text-center Reg. Calificado
+                                th(width="60%"): p.text-center Postgrado
+                                th(width="10%"): p.text-center Tipo
+                                th(width="18%"): p.text-center Accion
+                        tbody
+                            each postgrado in postgrados
+                                tr
+                                    td(width="12%")
+                                        h5.text-center #{postgrado.registro_cal}
+                                    td(width="60%")
+                                        h4 #{postgrado.nombre}
+                                    td(width="10%")
+                                        p.text-center
+                                            case postgrado.tipo_postgrado
+                                                when 'Máestria'
+                                                    span.label.label-primary #{postgrado.tipo_postgrado}
+                                                when 'Master'
+                                                    span.label.label-primary Máestria
+                                                when 'Especialización'
+                                                    span.label.label-success #{postgrado.tipo_postgrado}
+                                                when 'Doctorado'
+                                                    span.label.label-warning #{postgrado.tipo_postgrado}
+
+                                    td(width="18%")
+                                        h5.text-center
+                                            a(href="/postgrado/#{postgrado.id}").btn.btn-default.btn-sm
+                                                i.fa.fa-cogs
+                                                | &nbsp; Administrar
+
+
+    br

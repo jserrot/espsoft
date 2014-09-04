@@ -1,0 +1,16 @@
+//
+   Created by fabiancote on 7/29/14.
+h1 Enlazar docente a asignatura
+
+form(method="POST", action="/docente/select")
+    input(type="hidden", name="asignatura", value="#{asignatura.id}")
+    legend
+        h3 Seleccione el docente que dictara la asignatura
+        each docente in docentes
+
+            input(type="radio", name="docente", value="#{docente.id}")
+            span #{docente.nombre}
+            br
+
+    input(type="submit", value="Seleccionar")
+br

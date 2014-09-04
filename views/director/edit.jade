@@ -1,0 +1,28 @@
+//
+   Created by fabiancote on 7/25/14.
+h1 Editor de Directores
+
+form(method="PUT", action="/director/edit")
+    legend
+        | nombres del director
+        input(type="text", name="nombres", autocomplete="off", required)
+    legend
+        | apellidos del director
+        input(type="text", name="apellidos", autocomplete="off", required)
+    legend
+        | tipo de documento
+        select(name="tipodoc")
+            option(value="Cedula de ciudadania") Cedula de ciudadania
+            option(value="Pasaporte") Pasaporte
+            option(value="Cedula de Extranjeria") Cedula de Extranjeria
+    legend
+        | numero de documento
+        input(type="text", name="numdoc", autocomplete="off", required)
+    legend
+        | Email
+        input(type="email", name="email", autocomplete="off", required)
+    legend
+        | telefono
+        input(type="number", name="telefono", autocomplete="off", required)
+
+br

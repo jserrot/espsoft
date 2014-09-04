@@ -1,0 +1,24 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa.nombre}
+h2 Postgrado: #{postgrado.nombre}
+h3 Pensum: #{pensum.nombre}
+
+h3 Agregar Asignatura al Pensum del postgrado.
+h3 paso #1: Datos princicales
+
+form(method="POST", action="/asignatura/timetable")
+    input(type="hidden", name="programa", value="#{programa.nombre}")
+    input(type="hidden", name="postgrado", value="#{postgrado.nombre}")
+    input(type="hidden", name="pensumid", value="#{pensum.id}")
+    input(type="hidden", name="pensumnom", value="#{pensum.nombre}")
+    p nombre de la asignatura
+        input(type="text", name="nombre", placeholder="Como se llamara la asignatura", required)
+    p Nivel de la asignatura
+        input(type="number", name="nivel", placeholder="Bimestre o semestre al que pertenece", required)
+    p Creditos de la asignatura
+        input(type="number", name="credito", placeholder="numero de creditos de la asignatura", required)
+    p: button(type="submit") Siguiente paso 2 &#x2794;
+br
+
+

@@ -1,0 +1,206 @@
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+
+    .row.bg-black.fix-top.margin-botton
+        .container
+            .col-lg-3
+                h2.text-center
+                    span.lead #{programa.nombre}
+                p.text-center
+                    span.label.label-info
+                        i.fa.fa-bookmark
+                        | &nbsp; Programa
+                p.text-center
+                    a(href="/director/profile").btn.btn-default.btn-xs
+                        i.fa.fa-chevron-circle-left
+                        | &nbsp; volver al programa
+
+
+            .col-lg-6
+                h2.text-center
+                    span #{postgrado.nombre}
+                    br
+                p.text-center
+                    span.label.label-default
+                        i.fa.fa-mortar-board
+                        |&nbsp; Postgrado
+                table.table
+                    tbody
+                        tr
+                            td
+                                p.text-center Cohortes
+                                h2.text-center
+                                    span.label.label-danger.text-size #{numcoh}
+                            td
+                                p.text-center Pensums
+                                h2.text-center
+                                    span.label.label-info.text-size #{numpen}
+                            td
+                                p.text-center Estudiantes
+                                h2.text-center
+                                    span.label.label-primary.text-size #{numes}
+                            td
+                                p.text-center Preinscritos
+                                h2.text-center
+                                    span.label.label-warning.text-size #{numpre}
+            .col-lg-3
+                h2.text-center
+
+                    span.lead
+                        i.fa.fa-info-circle
+                        |&nbsp; Informacion
+                .well.well-lg
+                    p
+                        strong Tipo de Postgrado
+                        br
+                        span.text-muted #{postgrado.tipo_postgrado}
+                    p
+                        strong Modalidad
+                        br
+                        span.text-muted #{postgrado.modalidad}
+                    p.text-center
+                        a(href="/postgrado/#{postgrado.id}/edit").btn.btn-info.btn-xs
+                            i.fa.fa-eye
+                            |&nbsp; Ver Informacion
+
+    .row
+        .container
+            .col-lg-6
+
+                .panel.panel-default
+                    .panel-heading
+                        span.badge.pull-right.badge-fix #{numpre}
+                        h5
+                            i.fa.fa-pencil-square
+                            |&nbsp; Solicitudes de Inscripcion
+
+
+                    .panel-body
+                        p.lead Lista de Interezados que desean realizar el postgrado y obtener informacion a cerca del mismo
+
+                        .scroll-list
+                            -if(inscritos[0]){
+                                table.table.table-hover.table-striped
+                                    - count=1
+                                    each inscrito in inscritos
+                                        tr
+                                            td(width="3%") #{count}
+                                            td(width="20%")
+                                                p.text-center
+                                                    -if (inscrito.estado == 1){
+                                                        span.label.label-success
+                                                            i.fa.fa-calendar
+                                                            | &nbsp; #{inscrito.fecha.toISOString().slice(0, 10)}
+                                                    -}else{
+                                                        span.label.label-danger
+                                                            i.fa.fa-calendar
+                                                            | &nbsp; #{inscrito.fecha.toISOString().slice(0, 10)}
+                                                    -}
+                                            td(width="70%")
+                                                | #{inscrito.nombre}
+                                            td(width="7%")
+                                                a(href="/preinscripcion/#{inscrito.id}").btn.btn-default
+                                                    i.fa.fa-search
+                                        -count++
+                            -}else{
+                                p.text-center.text-info no hay solicitudes de inscripcion para el postgrado
+                            -}
+                        legend
+                        p.text-center
+                            a(href="/preinscripcion/#{postgrado.id}/add").btn.btn-default
+                                i.fa.fa-plus-square
+                                | &nbsp; Agregar Solicitud
+
+
+            .col-lg-3
+                .panel.panel-default
+                    .panel-heading
+                        span.badge.pull-right.badge-fix #{numcoh}
+                        h5
+                            i.fa.fa-gavel
+                            |&nbsp; Cohortes
+
+                    .panel-body
+                        p.lead Cohortes del postgrado que se encuntran registradas
+
+                        .scroll-list
+                            -if (cohortes[0]){
+                                table.table.table-hover.table-striped
+                                    - count=1
+                                    each cohorte in cohortes
+                                        tr
+                                            td(width="5%")
+                                                span.label.label-danger #{count}
+
+                                            td(width="80%") #{cohorte.nombre}
+                                            td(width="15%")
+                                                a(href="/cohorte/#{cohorte.id}").label.label-default
+                                                    i.fa.fa-search
+                                        -count++
+                            -}else{
+                                p.text-center.text-info No hay cohortes en el sistema
+                            -}
+                        legend
+                        p.text-center
+                            a(href="/cohorte/#{postgrado.id}/new").btn.btn-default
+                                i.fa.fa-plus-square
+                                | &nbsp; Crear Cohorte
+
+
+
+            .col-lg-3
+                .panel.panel-default
+                    .panel-heading
+                        span.badge.pull-right.badge-fix #{numpen}
+                        h5
+                            i.fa.fa-book
+                            |&nbsp; Pensums
+
+                    .panel-body
+                        p.lead Pensums que rigen el Postgrado
+
+                        .scroll-list
+                            -if (pensums[0]){
+                                table.table.table-hover.table-striped
+                                    - count=1
+                                    each pensum in pensums
+                                        tr
+                                            td(width="5%")
+                                                span.label.label-danger #{count}
+
+                                            td(width="80%") #{pensum.nombre}
+                                            td(width="15%")
+                                                a(href="/pensum/#{pensum.id}").label.label-default
+                                                    i.fa.fa-search
+                                        -count++
+                            -}else{
+                                p.text-center.text-info No hay Pensums en el sistema
+                            -}
+                        legend
+                        p.text-center
+                            a(href="/pensum/#{postgrado.id}/new").btn.btn-default
+                                i.fa.fa-plus-square
+                                | &nbsp; Nuevo Pensum
+
+
+
+        br

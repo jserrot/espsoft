@@ -1,0 +1,60 @@
+//
+   Created by fabiancote on 7/22/14.
+extends layoutlg
+block content
+        .navbar.navbar-default
+            .container
+                .navbar-header
+                    a(class="navbar-brand", href="#") Sistema EspSoft
+                    button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                .navbar-collapse.collapse.navbar-responsive-collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href="#") Postgrados
+                        li
+                            a(href="#") UFPS
+
+        .container
+            .row
+                .col-lg-4
+                    h1.text-bg Bienvenido Director de programa!!
+                    p.lead.text-bg Para ingresar a su cuenta de administracion, por favor ingrese los datos requeridos a continuacion.
+                    .well.bs-component
+
+                        form(class="form-horizontal", method="POST", action="/login")
+                            fieldset
+                                legend Formulario de ingreso
+                                -if (error == 1){
+                                    .alert.alert-dismissable.alert-danger
+                                        strong Cuenta de usuario no valida
+                                        br
+                                        | La cuenta de usuario que ingresaste no pertenece a ninguna cuenta
+                                -}
+                                -if (error == 2){
+                                    .alert.alert-dismissable.alert-danger
+                                        strong Contraseña no valida
+                                        br
+                                        | La contraseña asociada a esta cuenta es incorrecta
+                                -}
+                                .form-group
+                                    label(for="inputUsuario", class="col-lg-2 control-label") Usuario
+                                    .col-lg-10
+                                        .input-group
+                                            span.input-group-addon
+                                                i.glyphicon.glyphicon-user
+                                            input(type="text", name="usuario", placeholder="Digite Nombre de Usuario", required, autofocus=).form-control
+                                .form-group
+                                    label(for="inputContrasena", class="col-lg-2 control-label") Clave
+                                    .col-lg-10
+                                        .input-group
+                                            span.input-group-addon
+                                                i.glyphicon.glyphicon-lock
+                                            input(type="password", name="contrasena", placeholder="Digite Contraseña", required).form-control
+
+                                .form-group
+                                    .col-lg-10.col-lg-offset-2
+                                        button(type="submit", class="btn btn-primary") Ingresar
+

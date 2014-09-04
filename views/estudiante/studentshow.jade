@@ -1,0 +1,18 @@
+//
+   Created by fabiancote on 8/6/14.
+h1 #{programa.nombre}
+
+h2 #{postgrado.nombre}
+
+h3 #{cohorte.nombre}
+
+h4 Estudiantes matriculados en la cohorte
+ul
+each estudiante in estudiantes
+    li #{estudiante.nombre}
+        br
+        a(href="/estudiante/#{estudiante.id}") ver estudiante
+br
+br
+a(href="/cohorte/#{cohorte.id}") regresar
+br

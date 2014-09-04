@@ -1,0 +1,31 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+
+h1 Programa #{programa.nombre}
+a(href="/programa/#{programa.id}/edit") Editar Programa Academico
+h4 director del programa:
+- if (director!=false){
+    ul
+        li
+            span #{datos.nombres} #{datos.apellidos}
+            br
+            span #{datos.email}
+            br
+            span #{datos.telefono}
+- }else{
+    span no se encuentra asignado director al programa
+-}
+
+br
+
+h2 postgrados del programa
+a(href="/postgrado/#{programa.id}/new") + Agregar Postgrado
+
+ul
+    each postgrado in postgrados
+        li: p #{postgrado.nombre} -
+            a(href="/postgrado/#{postgrado.id}") ver
+
+
+a(href="/director/profile") &#9166;regresar.
+

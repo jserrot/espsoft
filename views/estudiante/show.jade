@@ -1,0 +1,176 @@
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+    .container
+        ul.breadcrumb
+            li: a(href="/director/profile") Inicio
+            li: a(href="/postgrado/#{postgrado.id}") Postgrado
+            li: a(href="/cohorte/#{cohorte.id}") Cohorte
+            li.active Informacion del estudiante
+
+        .row
+            .margin-auto
+                p.lead.text-center
+                    strong Informacion del Estudiante
+                    span.text-primary &nbsp; #{postgrado.nombre} -
+                    strong.text-primary &nbsp; #{programa.nombre}
+                p.lead.text-center
+                    span.text-muted &nbsp; Informacion general del estudiante
+
+
+            .col-lg-6
+                .panel.panel-default
+                    .panel-heading
+                        h5
+                            i.fa.fa-user
+                            |&nbsp; Datos personales del estudiante
+                    .panel-body
+                        form(method="POST", action="/estudiante/#{estudiante.id}").form-horizontal
+                            input(type="hidden", name="_method", value="PUT")
+                            input(type="hidden", name="eid", value="#{estudiante.id}")
+                            fieldset
+                                .form-group
+                                    label(for="inputNombre", class="col-lg-2 control-label") Nombres
+                                    .col-lg-10
+
+                                        .input-group
+                                            span.input-group-addon
+                                                i.fa.fa-user
+                                            input(type="text", name="nombres", value="#{datos.nombres}", required).form-control
+                                        p.lead.text-muted Nombre del estudiante
+                                .form-group
+                                    label(for="inputApellido", class="col-lg-2 control-label") Apellidos
+                                    .col-lg-10
+
+                                        .input-group
+                                            span.input-group-addon
+                                                i.fa.fa-user
+                                            input(type="text", name="apellidos", value="#{datos.apellidos}", required).form-control
+                                        p.lead.text-muted Apellidos del estudiante
+                                .form-group
+                                    label(for="inputidentidad", class="col-lg-2 control-label") Documento
+                                    .col-lg-10
+
+                                        .input-group
+                                            span.input-group-addon
+                                                i.fa.fa-bookmark
+                                            input(type="text", name="documento", value="#{datos.documento}", required).form-control
+                                        p.lead.text-muted Numero de identificacion del estudiante
+                                .form-group
+                                    label(for="inputidentidad", class="col-lg-2 control-label") Tipo documento
+                                    .col-lg-10
+
+                                        .input-group
+                                            span.input-group-addon
+                                                i.fa.fa-bookmark
+                                            select(name="tipodoc").form-control
+                                                case datos.tipo_documento
+                                                    when 'Cedula de ciudadania'
+                                                        option(value="Cedula de ciudadania", selected="true") Cedula de ciudadania
+                                                        option(value="Pasaporte") Pasaporte
+                                                        option(value="Cedula de Extranjeria") Cedula de Extranjeria
+                                                    when 'Pasaporte'
+                                                        option(value="Cedula de ciudadania") Cedula de ciudadania
+                                                        option(value="Pasaporte", selected="true") Pasaporte
+                                                        option(value="Cedula de Extranjeria") Cedula de Extranjeria
+                                                    when 'Cedula de Extranjeria'
+                                                        option(value="Cedula de ciudadania") Cedula de ciudadania
+                                                        option(value="Pasaporte") Pasaporte
+                                                        option(value="Cedula de Extranjeria", selected="true") Cedula de Extranjeria
+
+                                        p.lead.text-muted tipo de documento
+                                .form-group
+                                    label(for="inputidentidad", class="col-lg-2 control-label") Email
+                                    .col-lg-10
+
+                                        .input-group
+                                            span.input-group-addon
+                                                i.fa.fa-send-o
+                                            input(type="email", name="email", value="#{datos.email}", required).form-control
+                                        p.lead.text-muted Correo electronico de contacto del estudiante
+                                .form-group
+                                    label(for="inputidentidad", class="col-lg-2 control-label") Telefono
+                                    .col-lg-10
+
+                                        .input-group
+                                            span.input-group-addon
+                                                i.fa.fa-phone
+                                            input(type="number", name="telefono", value="#{datos.telefono}", required).form-control
+                                        p.lead.text-muted Numero telefonico de contacto
+
+
+
+                                .form-group
+                                        h5.text-center
+                                            button(type=submit).btn.btn-primary
+                                                i.fa.fa-save
+                                                | &nbsp; Guardar
+
+            .col-lg-6
+                .panel.panel-default
+                    .panel-heading
+                        h5
+                            i.fa.fa-user
+                            |&nbsp; Datos universitarios del estudiante
+                    .panel-body
+                        .form-horizontal
+                            faildset
+                                .form-group
+                                    label(for="nombre", class="col-lg-2 control-label") Fecha de Matricula
+                                    .col-lg-10
+                                        h2.text-primary
+                                            i.fa.fa-calendar
+                                            | &nbsp; #{datofi.fecha_pago.toISOString().slice(0, 10)}
+                                .form-group
+                                    label(for="nombre", class="col-lg-2 control-label") Codigo
+                                    .col-lg-10
+                                        p.lead #{estudiante.codigo}
+                                .form-group
+                                    h5.text-center
+                                        a(href="/cohorte/#{estudiante.cohorte}").btn.btn-default.btn-xs
+                                            i.fa.fa-chevron-circle-left
+                                            | &nbsp; Volver a la cohorte
+                                legend
+                                p.lead.text-muted Materias del estudiante
+
+                                table.table.table-hover.table-striped
+                                    thead
+                                        tr
+                                            th(width="10%"): p.text-center Nivel
+                                            th(width="45%"): p Materia
+                                            th(width="30%"): P.text-center Creditos
+                                            th(width="15%"): p.text-center Nota
+                                    tbody
+                                        .scroll-list
+                                            each  asignatura in asignaturas
+                                                tr
+                                                    td(width="10%"): p.text-center
+                                                        span.label.label-default #{asignatura.nivel}
+                                                    td(width="45%") #{asignatura.nombre}
+                                                    td(width="30%"): p.text-center
+                                                        span.label.label-warning #{asignatura.credito}
+                                                    td(width="15%")
+                                                        -if (asignatura.nota == null){
+                                                            p.text-center -
+                                                        -}else{
+                                                            p.text-center #{asignatura.nota}
+                                                        -}
+

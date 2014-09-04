@@ -1,0 +1,16 @@
+//
+   Created by fabiancote on 7/29/14.
+h1 asignacion de titulos a docentes
+h3 #{datos.nombres} #{datos.apellidos}
+form(method="POST", action="/titulo/create")
+    input(type="hidden", name="docente", value="#{docente.id}")
+    legend
+        | Titulo Academico
+        input(type="text", name="titulo", autocomplete="off", required, placeholder="ejemplo:'Doctorado en administracion de proyectos'")
+    legend
+        | Universidad que otorgo el titulo
+        input(type="text", name="universidad", autocomplete="off", required, placeholder="ejemplo: 'Universodad Francisco de Paula Santander'")
+    input(type="submit", value="Crear")
+
+br
+

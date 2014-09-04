@@ -1,0 +1,141 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa}
+h2 Postgrado: #{postgrado}
+h3 Pensum: #{pensumnom}
+h3 Agregar Asignatura al Pensum del postgrado.
+h3 paso #2: Horario de la asignatura
+
+h4 nombre de la asignatura: #{nombre}
+
+form(method="POST", action="/asignatura/create")
+    input(type="hidden", name="programa", value="#{programa}")
+    input(type="hidden", name="postgrado", value="#{postgrado}")
+    input(type="hidden", name="pensumid", value="#{pensumid}")
+    input(type="hidden", name="pensumnom", value="#{pensumn}")
+    input(type="hidden", name="nombre", value="#{nombre}")
+    input(type="hidden", name="nivel", value="#{nivel}")
+    input(type="hidden", name="creditos", value="#{creditos}")
+    p Seleccione el dia de la semana
+        select(name="dia", required)
+            option(value="Lunes") Lunes
+            option(value="Martes") Martes
+            option(value="Miercoles") Miercoles
+            option(value="Jueves") Jueves
+            option(value="Viernes") Viernes
+            option(value="Sabado") Sabado
+            option(value="Domingo") Domingo
+        select(name="hora", required)
+            option(value="00:00") 00:00 h
+            option(value="01:00") 01:00 h
+            option(value="02:00") 02:00 h
+            option(value="03:00") 03:00 h
+            option(value="04:00") 04:00 h
+            option(value="05:00") 05:00 h
+            option(value="06:00") 06:00 h
+            option(value="07:00") 07:00 h
+            option(value="08:00") 08:00 h
+            option(value="09:00") 09:00 h
+            option(value="10:00") 10:00 h
+            option(value="11:00") 11:00 h
+            option(value="12:00") 12:00 h
+            option(value="13:00") 13:00 h
+            option(value="14:00") 14:00 h
+            option(value="15:00") 15:00 h
+            option(value="16:00") 16:00 h
+            option(value="17:00") 17:00 h
+            option(value="18:00") 18:00 h
+            option(value="19:00") 19:00 h
+            option(value="20:00") 20:00 h
+            option(value="21:00") 21:00 h
+            option(value="22:00") 22:00 h
+            option(value="23:00") 23:00 h
+        select(name="duracion", required)
+            option(value="00:00") 00:00 h
+            option(value="01:00") 01:00 h
+            option(value="02:00") 02:00 h
+            option(value="03:00") 03:00 h
+            option(value="04:00") 04:00 h
+            option(value="05:00") 05:00 h
+            option(value="06:00") 06:00 h
+            option(value="07:00") 07:00 h
+            option(value="08:00") 08:00 h
+            option(value="09:00") 09:00 h
+            option(value="10:00") 10:00 h
+            option(value="11:00") 11:00 h
+            option(value="12:00") 12:00 h
+            option(value="13:00") 13:00 h
+            option(value="14:00") 14:00 h
+            option(value="15:00") 15:00 h
+            option(value="16:00") 16:00 h
+            option(value="17:00") 17:00 h
+            option(value="18:00") 18:00 h
+            option(value="19:00") 19:00 h
+            option(value="20:00") 20:00 h
+            option(value="21:00") 21:00 h
+            option(value="22:00") 22:00 h
+            option(value="23:00") 23:00 h
+        input(type="text", name="lugar", placeholder="salon y edificio de la clase", required)
+    p Seleccione el dia de la semana
+        select(name="diad")
+            option(value="Lunes") Lunes
+            option(value="Martes") Martes
+            option(value="Miercoles") Miercoles
+            option(value="Jueves") Jueves
+            option(value="Viernes") Viernes
+            option(value="Sabado") Sabado
+            option(value="Domingo") Domingo
+        select(name="horad",)
+            option(value="xxx") 00:00 h
+            option(value="01:00") 01:00 h
+            option(value="02:00") 02:00 h
+            option(value="03:00") 03:00 h
+            option(value="04:00") 04:00 h
+            option(value="05:00") 05:00 h
+            option(value="06:00") 06:00 h
+            option(value="07:00") 07:00 h
+            option(value="08:00") 08:00 h
+            option(value="09:00") 09:00 h
+            option(value="10:00") 10:00 h
+            option(value="11:00") 11:00 h
+            option(value="12:00") 12:00 h
+            option(value="13:00") 13:00 h
+            option(value="14:00") 14:00 h
+            option(value="15:00") 15:00 h
+            option(value="16:00") 16:00 h
+            option(value="17:00") 17:00 h
+            option(value="18:00") 18:00 h
+            option(value="19:00") 19:00 h
+            option(value="20:00") 20:00 h
+            option(value="21:00") 21:00 h
+            option(value="22:00") 22:00 h
+            option(value="23:00") 23:00 h
+        select(name="duraciond")
+            option(value="00:00") 00:00 h
+            option(value="01:00") 01:00 h
+            option(value="02:00") 02:00 h
+            option(value="03:00") 03:00 h
+            option(value="04:00") 04:00 h
+            option(value="05:00") 05:00 h
+            option(value="06:00") 06:00 h
+            option(value="07:00") 07:00 h
+            option(value="08:00") 08:00 h
+            option(value="09:00") 09:00 h
+            option(value="10:00") 10:00 h
+            option(value="11:00") 11:00 h
+            option(value="12:00") 12:00 h
+            option(value="13:00") 13:00 h
+            option(value="14:00") 14:00 h
+            option(value="15:00") 15:00 h
+            option(value="16:00") 16:00 h
+            option(value="17:00") 17:00 h
+            option(value="18:00") 18:00 h
+            option(value="19:00") 19:00 h
+            option(value="20:00") 20:00 h
+            option(value="21:00") 21:00 h
+            option(value="22:00") 22:00 h
+            option(value="23:00") 23:00 h
+        input(type="text", name="lugard", placeholder="salon y edificio de la clase")
+    p: button(type="submit") + Crear Asignatura
+br
+

@@ -1,0 +1,21 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa.nombre}
+h1 Postgrado: #{postgrado.nombre}
+h1 pensum: #{pensum.nombre}
+
+h2 Editor de Asignatura
+
+form(method="POST", action="/asignatura/#{asignatura.id}")
+    input(type="hidden", name="_method", value="PUT")
+    p nombre de la asignatura
+        input(type="text", name="nombre",value="#{asignatura.nombre}", required)
+    p Nivel de la asignatura
+        input(type="number", name="nivel", value="#{asignatura.nivel}", required)
+    p Creditos de la asignatura
+        input(type="number", name="credito", value="#{asignatura.cradito}", required)
+    p: button(type="submit") Actualizar
+
+
+br
+

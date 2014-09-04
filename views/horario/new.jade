@@ -1,0 +1,20 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Crear nuevo horario
+h1 Asignatura: #{asignatura.nombre}
+
+form(method="POST", action="/horario/create")
+    input(type="hidden", name="asignatura", value="#{asignatura.id}")
+    p selecciona el dia y la hora de la clase
+        select(name="dia", required)
+            each dia in dias
+                option(value="#{dia}") #{dia}
+        select(name="hora", required)
+            each hora in horas
+                option(value="#{hora}") #{hora}h
+        select(name="duracion", required)
+            each hora in horas
+                option(value="#{hora}") #{hora}h
+        input(type="text", name="lugar", placeholder="LUgar y edificio de la clase")
+        p: button(type="submit") + Crear
+br

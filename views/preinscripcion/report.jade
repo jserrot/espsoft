@@ -1,0 +1,71 @@
+//
+   Created by fabiancote on 8/1/14.
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+    .container
+        ul.breadcrumb
+            li: a(href="/director/profile") Inicio
+            li.active Reporte de pago
+        .row
+            .margin-auto
+                p.lead.text-center
+                    strong Reporte de pago
+                p.lead.text-center
+                    span.text-info Paso #2:
+                    span.text-muted &nbsp; Seleccione la fecha en la que fue realizado el pago
+                .well.bs-component
+                    form(method="POST", action="/preinscripcion/report").form-horizontal
+                        input(type="hidden", name="inscrito", value="#{inscrito.id}")
+                        faildset
+                            legend
+
+                            .form-group
+                                label(for="documento", class="col-lg-2 control-label") Identidad
+                                .col-lg-10
+                                    p.lead
+                                        span #{datos.documento}
+                                        br
+                                        span.text-muted #{datos.tipo_documento}
+
+
+                            .form-group
+                                label(for="nombre", class="col-lg-2 control-label") Nombre
+                                .col-lg-10
+                                    p.lead #{datos.nombres} #{datos.apellidos}
+
+                            .form-group
+                                label(for="pago", class="col-lg-2 control-label") Fecha de pago
+                                .col-lg-10
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-calendar-o
+                                        input(type="date", name="fecha", required).form-control
+                                    p.lead Seleccione la fecha en la que fue realizado el pago de la matricula del postgrado
+
+                            .form-group
+                                .col-lg-10.col-lg-offset-2
+                                    a(href="/director/profile").btn.btn-default.margin-right-1
+                                        i.fa.fa-times-circle
+                                        | &nbsp; Cancelar
+                                    button(type="submit", class="btn btn-primary")
+                                        i.fa.fa-hand-o-right
+                                        | &nbsp; Reportar el pago

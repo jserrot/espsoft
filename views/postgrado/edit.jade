@@ -1,0 +1,133 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+    .container
+        ul.breadcrumb
+            li: a(href="/director/profile") Inicio
+            li: a(href="/postgrado/#{postgrado.id}") Postgrado
+            li.active Informacion del postgrado
+        .row
+            .margin-auto
+                p.lead.text-center
+                    strong Informacion del postgrado
+                    span.text-primary &nbsp; #{postgrado.nombre}
+                p.lead.text-center
+                    span.text-muted &nbsp; Informacion general del Postgrado
+                .well.bs-component
+                    form(method="POST", action="/postgrado/#{postgrado.id}").form-horizontal
+                        input(type="hidden", name="_method", value="PUT")
+                        input(type="hidden", name="id", value="#{postgrado.id}")
+                        faildset
+                            legend
+
+                            .form-group
+                                label(for="inputRegistro", class="col-lg-2 control-label") Registro Calificado
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-bookmark
+                                        input(type="text", name="regiscal", value="#{postgrado.registro_cal}", required).form-control
+                                    p.lead.text-muted Numero de registro de guia, del documento de aceptacion de los permisos que otorga para el ofrecimiento del postgrado
+
+                            .form-group
+                                label(for="inputNombre", class="col-lg-2 control-label") Nombre
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-mortar-board
+                                        input(value="#{postgrado.nombre}", name="nombre", type="text", required).form-control
+                                    p.lead.text-muted Nombre de la titulacion que obtendra el estudiante al termino del postgrado
+
+
+                            .form-group
+                                label(for="inputTipo", class="col-lg-2 control-label") Tipo de postgrado
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-tag
+                                        select#tipo(name="tipo").form-control
+                                            case postgrado.tipo_postgrado
+                                                when 'Máestria'
+                                                    option(value="Máestria", selected="true") Máestria
+                                                    option(value="Especialización") Especialización
+                                                    option(value="Doctorado") Doctorado
+                                                when 'Master'
+                                                    option(value="Máestria", selected="true") Máestria
+                                                    option(value="Especialización") Especialización
+                                                    option(value="Doctorado") Doctorado
+                                                when 'Especialización'
+                                                    option(value="Máestria") Máestria
+                                                    option(value="Especialización", selected="true") Especialización
+                                                    option(value="Doctorado") Doctorado
+                                                when 'Doctorado'
+                                                    option(value="Máestria") Máestria
+                                                    option(value="Especialización") Especialización
+                                                    option(value="Doctorado", selected="true") Doctorado
+
+                                    p.lead.text-muted Tipo de estudio al que el postgrado pertenece y tipo de titulacion que obtendra el estudiante
+
+                            .form-group
+                                label(for="inputduracion", class="col-lg-2 control-label") Tiempo de duracion
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-clock-o
+                                        input(value="#{postgrado.duracion}", name="duracion", type="Number", required).form-control
+                                    p.lead.text-muted Tiempo requerido para cumplir con los requisitos de la titulacion del postgrado
+
+
+                            .form-group
+                                label(for="inputmodalidad", class="col-lg-2 control-label") Modalidad
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-leaf
+                                        select(name="modalidad").form-control
+                                            -if (postgrado.modalidad == 'Presencial'){
+                                                option(value="Presencial", selected="true") Presencial
+                                                option(value="Distancia") Distancia
+                                            -}else{
+                                                option(value="Presencial") Presencial
+                                                option(value="Distancia", selected="true") Distancia
+                                            -}
+                                    p.lead Manera como se realizaran las clases del postgrado
+
+                            legend
+                            textarea(name="leyenda", reqired, id="leyenda", class="leyenda").form-control #{postgrado.dirigido}
+                            script(type="text/javascript")
+                                $('.leyenda').jqte();
+
+                            legend
+
+                            .form-group
+                                h5.text-center
+                                    button(type="submit").btn.btn-primary
+                                        i.fa.fa-plus-square
+                                        | &nbsp; Aceptar
+
+                    br

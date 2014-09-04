@@ -1,0 +1,40 @@
+//
+   Created by fabiancote on 7/17/14.
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+    .container
+        ul.breadcrumb
+            li: a(href="/director/profile") Inicio
+            li.active Creacion de Cohorte
+        .row
+            .margin-auto
+                p.lead.text-center
+                    strong Creacion de cohorte
+                p.error.text-center # Error
+                p.lead.text-center
+                    strong #{title}
+                    | , #{msg}
+                p.text-center
+                    a(href="#{btn}").btn.btn-default Regresar
+    br
+
+

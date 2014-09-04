@@ -1,0 +1,71 @@
+extends ../layout
+block content
+
+    .navbar.navbar-inverse.navbar
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+
+    .container
+        ul.breadcrumb
+            li: a(href="/director/profile") Inicio
+            li.active Registro de Postgrado
+        .row
+            .margin-auto
+                p.lead.text-center
+                    strong Registro de Postgrado
+                    span.text-primary &nbsp; #{programa.nombre}
+                p.lead.text-center
+                    span.text-info Paso #1:
+                    span.text-muted &nbsp; Informacion general del Postgrado a registrar
+                .well.bs-component
+                    form(method="POST", action="/postgrado/newlinfo").form-horizontal
+                        input(type="hidden", name="id", value="#{programa.id}")
+                        input(type="hidden", name="programa", value="#{programa.nombre}")
+                        faildset
+                            legend
+                            .form-group
+                                label(for="inputNombre", class="col-lg-2 control-label") Nombre
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-mortar-board
+                                        input(type="text", name="nombre", placeholder="Digite Nombre del postgrado", autocomplete="off", required, autofocus=).form-control
+                                    p.lead Nombre de la titulacion que obtendra el estudiante al termino del postgrado
+
+                            .form-group
+                                label(for="inputTipo", class="col-lg-2 control-label") Tipo
+                                .col-lg-10
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-tag
+                                        select#tipo(name="tipo").form-control
+                                            option(value="Máestria") Máestria
+                                            option(value="Especialización") Especialización
+                                            option(value="Doctorado") Doctorado
+                                    p.lead Tipo de estudio al que el postgrado pertenece y tipo de titulacion que obtendra el estudiante
+                            .form-group
+                                .col-lg-10.col-lg-offset-2
+                                    a(href="/director/profile").btn.btn-default.margin-right-1
+                                        i.fa.fa-times-circle
+                                        | &nbsp; Cancelar
+                                    button(type="submit", class="btn btn-default")
+                                        | Siguiente, paso #2 &nbsp;
+                                        i.fa.fa-arrow-right
+                            br

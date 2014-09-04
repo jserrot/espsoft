@@ -1,0 +1,19 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa.nombre}
+h1 Postgrado: #{postgrado.nombre}
+h2 paso 1: Asignacion de nombre y datos del pensum.
+
+form(method="POST", action="/pensum/create")
+    input(type="hidden", name="programanom", value="#{programa.nombre}")
+    input(type="hidden", name="postgradoid", value="#{postgrado.id}")
+    input(type="hidden", name="postgradonom", value="#{postgrado.nombre}")
+    p Nombre del Pensum
+        input(type="text", name="nombre", placeholder="nombre del pensum", required)
+    p fecha de creacion
+        input(type="date", name="fecha", placeholder="fecha de creacion", required)
+    p Resolucion
+        input(type="text", name="resolucion", placeholder="numero de folio de la recolucion", required)
+    p: button(type="submit") Siguiente paso 2 &#x2794;
+
+

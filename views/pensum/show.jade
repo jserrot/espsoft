@@ -1,0 +1,20 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa.nombre}
+h2 postgrado: #{postgrado.nombre}
+h2 pensum: #{pensum.nombre}
+
+h3 Materias pertenecientes al pensum:
+a(href="/asignatura/new/#{pensum.id}") +Crear Asignatura
+- var semaforo = {nivel:0}
+ul
+    each asignatura in asignaturas
+        if(semaforo.nivel!=asignatura.nivel)
+            li materias de #{asignatura.nivel}
+            li: a(href="/asignatura/#{asignatura.id}") #{asignatura.nombre}
+            - semaforo.nivel=asignatura.nivel
+        else
+            li: a(href="/asignatura/#{asignatura.id}") #{asignatura.nombre}
+br
+a(href="/postgrado/#{postgrado.id}") &#9166;Regresar
+br

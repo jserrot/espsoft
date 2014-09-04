@@ -1,0 +1,13 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+
+h1 Editor Programa Academico
+
+form(method="POST", action="/programa/#{programa.id}")
+    input(type="hidden", name="_method", value="PUT")
+    input(type="hidden", name="id", value="#{programa.id}")
+    p id:#{programa.id}
+    p nombre:
+        input#name(type="text", name="nombre", value="#{programa.nombre}")
+    p: button(type="submit") editar Programa
+

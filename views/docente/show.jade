@@ -1,0 +1,23 @@
+//
+   Created by fabiancote on 7/29/14.
+h1 Visor de docentes
+
+h4 #{datos.nombres} #{datos.apellidos}
+h5 email: #{datos.email}
+h5 telefono: #{datos.telefono}
+
+h3 Titulos academicos del docente
+
+- if (titulos.lenght==0){
+    h4 no hay titulos registrados
+- }else{
+    ul
+        each titulo in titulos
+            li: | #{titulo.titulo} - #{titulo.universidad}
+                br
+                a(href="/titulo/#{titulo.id}/delete") Eliminar
+-}
+a(href="/titulo/#{docente.id}/new") Agregar titulo academico
+
+
+br

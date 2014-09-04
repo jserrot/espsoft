@@ -1,0 +1,30 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+
+h1 Editor de Horario
+
+form(method="POST", action="/horario/#{horario.id}")
+    input(type="hidden", name="_method", value="PUT")
+    p Cambia la informacion del horario
+        select(name="dia", required)
+            each dia in dias
+                if(dia!=horario.dia)
+                    option(value="#{dia}") #{dia}
+                else
+                    option(value="#{dia}", selected="selected") #{dia}
+        select(name="hora", required)
+            each hora in horas
+                if(hora!=horario.hora_inicia)
+                    option(value="#{hora}") #{hora}h
+                else
+                    option(value="#{hora}", selected="selected") #{hora}h
+        select(name="duracion", required)
+            each hora in horas
+                if(hora!=horario.duracion)
+                    option(value="#{hora}") #{hora}h
+                else
+                    option(value="#{hora}", selected="selected") #{hora}h
+        input(type="text", name="lugar", value="#{horario.Lugar}")
+        p: button(type="submit") + Actualizar
+br
+

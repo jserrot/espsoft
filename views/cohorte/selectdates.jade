@@ -1,0 +1,37 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa}
+h2 postgrado: #{postgradon}
+br
+h3 Creador de cohortes: paso #2 seleccionar fechas
+form(method="POST", action="/cohorte/create")
+    input(type="hidden", name="programa", value="#{programa}")
+    input(type="hidden", name="postgradoid", value="#{postgradoi}")
+    input(type="hidden", name="postgradon", value="#{postgradon}")
+    input(type="hidden", name="resolco", value="#{resolucion}")
+    input(type="hidden", name="nombreco", value="#{nombre}")
+    input(type="hidden", name="pensum", value="#{pensum}")
+    p Seleccione fecha de inicio de inscripciones
+        input(type="date", name="finscripciones", required)
+    p Seleccione fecha limite de inscriciones
+        input(type="date", name="flinscripciones", required)
+    p Fecha de entrevistas
+        input(type="date", name="fentrevista", required)
+    p Fecha publicacion de resultados
+        input(type="date", name="fresultados", required)
+    p Fecha de matricula
+        input(type="date", name="fmatricula", required)
+    p fecha de introduccion
+        input(type="date", name="fintroduccion", required)
+    p fecha de receso de clases
+        input(type="date", name="freceso")
+    p fecha de culminacion de clases
+        input(type="date", name="fcclases", required)
+    p Valor del postgrado
+        input(type="number", name="valor", required)
+    p otro valor
+        input(type="number", name="otro", required)
+    p: button(type="submit") Siguiente paso 3 &#x2794;
+
+br
+

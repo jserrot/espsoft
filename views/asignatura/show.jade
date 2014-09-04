@@ -1,0 +1,38 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+h1 Programa: #{programa.nombre}
+h1 Postgrado: #{postgrado.nombre}
+h1 pensum: #{pensum.nombre}
+
+h1 Datos Principales
+h2 materia: #{asignatura.nombre}
+p semestre/trimestre: #{asignatura.nivel}
+p creditos: #{asignatura.cradito}
+a(href="/asignatura/#{asignatura.id}/edit") Editar informacion
+
+p profesor:
+    - if (docente){
+        | #{datos.nombres} #{datos.apellidos}
+        br
+        a(href="/docente/#{docente.id}") ver docente
+        br
+        a(href="/docente/#{asignatura.id}/new") cambiar docente
+    -}else{
+        a(href="/docente/#{asignatura.id}/new") Asignar docente
+    -}
+
+
+h1 Horario
+p horario de la asignatura
+ul
+    each horario in horarios
+        li: span #{horario.dia} - de #{horario.hora_inicia} a #{horario.duracion} - lugar: #{horario.Lugar}
+            br
+            a(href="/horario/#{horario.id}/edit") Editar
+            br
+            a(href="/horario/#{horario.id}/delete") Eliminar
+a(href="/horario/#{asignatura.id}/new") Agregar un horario
+br
+br
+a(href="/pensum/#{pensum.id}") &#9166;Regresar
+br

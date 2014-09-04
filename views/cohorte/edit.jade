@@ -1,0 +1,38 @@
+//
+   Created by fabiancote on 7/18/14.
+h2 Editor de cohorte
+h3 #{programa.nombre}
+h4 #{postgrado.nombre}
+
+h5 #{cohorte.resolucion} - #{cohorte.nombre}
+
+form(method="POST", action="/cohorte/#{cohorte.id}")
+    input(type="hidden", name="_method", value="PUT")
+    input(type="hidden", name="id", value="#{cohorte.id}")
+    p fecha inicio de inscripciones
+        input(value="#{cohorte.fecha_inicio_insc.toISOString().slice(0, 10)}", name="finscrip", type="date", required)
+    p fecha limite de inscripciones
+        input(value="#{cohorte.fecha_limite_insc.toISOString().slice(0, 10)}", name="flinscrip", type="date", required)
+    p fecha de entrevista
+        input(value="#{cohorte.fecha_entrevista.toISOString().slice(0, 10)}", name="fentrevista", type="date", required)
+    p fecha de resultados
+        input(value="#{cohorte.fecha_resultados.toISOString().slice(0, 10)}", name="fresultados", type="date", required)
+    p fecha de matricula
+        input(value="#{cohorte.fecha_matricula.toISOString().slice(0, 10)}", name="fmatricula", type="date", required)
+    p fecha de introduccion al postgrado
+        input(value="#{cohorte.fecha_introduccion.toISOString().slice(0, 10)}", name="fintro", type="date", required)
+    p fecha de receso de clases
+        input(value="#{cohorte.fecha_receso.toISOString().slice(0, 10)}", name="freceso", type="date", required)
+    p fecha de terminacion de clases
+        input(value="#{cohorte.fecha_termina_clase.toISOString().slice(0, 10)}", name="ftermina", type="date", required)
+    p valor del postgrado
+        input(value="#{cohorte.valor}", name="valor", type="number", required)
+    p valor por comcepto de otros gastos
+        input(value="#{cohorte.otros}", name="otro", type="number", required)
+    p link de recorsus para el estudiante
+        input(value="#{cohorte.link}", name="link", type="text", required)
+
+
+    p: button(type="submit") + Guardar Cambios
+
+br

@@ -1,0 +1,95 @@
+extends ../layout
+block content
+    .navbar.navbar-inverse.navbar
+        .container
+            .navbar-header
+                a(class="navbar-brand", href="#") Sistema EspSoft
+                button(class="navbar-toggle", type="button", data-toggle="collapse", data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+            .navbar-collapse.collapse.navbar-responsive-collapse
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Postgrados
+                    li
+                        a(href="#") UFPS
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/logout")
+                            i.fa.fa-power-off
+                            | &nbsp; Cerrar Sesion
+
+    .container
+        ul.breadcrumb
+            li: a(href="/director/profile") Inicio
+            li.active Registro de Postgrado
+        .row
+            .margin-auto
+                p.lead.text-center
+                    strong Registro de Postgrado
+                    span.text-primary &nbsp; #{programa}
+
+                p.lead.text-center
+                    span.text-primary #{nombre} - &nbsp;
+                    strong.text-info #{tipo}
+
+                p.lead.text-center
+                    span.text-info Paso #2:
+                    span.text-muted &nbsp; Informacion Detallada de requisitos para el postgrado
+
+                .well.bs-component
+
+                    form(method="POST", action="/postgrado/create").form-horizontal
+                        input(type="hidden", name="id", value="#{programaid}")
+                        input(type="hidden", name="nombrepro", value="#{programa}")
+                        input(type="hidden", name="nombrepost", value="#{nombre}")
+                        input(type="hidden", name="tipo", value="#{tipo}")
+                        faildset
+                            .form-group
+                                label(for="inputDuracion", class="col-lg-2 control-label") Registro
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-bookmark
+                                        input(type="text", name="regiscal", placeholder="Identificador registro calificado", required, autofocus, autocomplete="off").form-control
+                                    p.lead Numero de registro de guia, del documento de aceptacion de los permisos que otorga para el ofrecimiento del postgrado
+
+                            .form-group
+                                label(for="inputDuracion", class="col-lg-2 control-label") Duracion
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-clock-o
+                                        input(type="number", name="duracion", placeholder="Meses que dura el postgrado", required).form-control
+                                    p.lead Tiempo requerido para cumplir con los requisitos de la titulacion del postgrado
+
+                            .form-group
+                                label(for="inputDuracion", class="col-lg-2 control-label") Modalidad
+                                .col-lg-10
+
+                                    .input-group
+                                        span.input-group-addon
+                                            i.fa.fa-leaf
+                                        select(name="modalidad").form-control
+                                            option(value="Presencial") Presencial
+                                            option(value="Distancia") Distancia
+                                    p.lead Manera como se realizaran las clases del postgrado
+
+
+                            .form-group
+                                p.lead Escribe la informacion que debe conocer las personas interesadas en realizar el postgrado
+                                textarea(name="leyenda", class="leyenda", reqired).form-control
+                                script(type="text/javascript")
+                                    $('.leyenda').jqte();
+                            legend
+
+                            .form-group
+                                a(href="/director/profile").btn.btn-default.margin-right-1
+                                    i.fa.fa-times-circle
+                                    | &nbsp; Cancelar
+                                button(type="submit").btn.btn-primary
+                                    i.fa.fa-plus-square
+                                    | &nbsp; Registrar

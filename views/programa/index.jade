@@ -1,0 +1,14 @@
+//
+   Created by Cesar Fabian Cote Guerrero - Universidad Francisco de Paula Santander - 2014.
+
+h1 Programas Academicos universitarios
+
+ul
+    each programa in programas
+        li: a(href="/programa/#{programa.id}/view") #{programa.nombre}
+
+br
+a(href="/programa/new") Agregar nuevo Programa
+br
+br
+a(href="/director/profile") Regresar

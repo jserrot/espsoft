@@ -1,0 +1,13 @@
+//
+   Created by fabiancote on 7/24/14.
+h1 Cambio de clave
+p este cambio automatico de clave solo se realizara una vez, y es para ofrecerle una mejor seguridad de su cuenta
+
+h2 usuario: #{user.usuario}
+form(method="POST", action="/director/#{user.id}")
+    input(type="hidden", name="_method", value="PUT")
+    legend
+        | Ingrese nueva contraseña
+        input(type="password", name="pass", required)
+    input(type="submit", value="Guardar")
+br
