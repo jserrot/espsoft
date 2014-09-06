@@ -20,19 +20,19 @@ block content
                     li
                         a(href="/logout")
                             i.fa.fa-power-off
-                            | &nbsp; Cerrar Sesion
+                            | &nbsp; Cerrar Sesión
     .container
         ul.breadcrumb
             li: a(href="/director/profile") Inicio
             li: a(href="/postgrado/#{postgrado.id}") Postgrado
-            li.active Informacion del postgrado
+            li.active Información del postgrado
         .row
             .margin-auto
                 p.lead.text-center
-                    strong Informacion del postgrado
+                    strong Información del postgrado
                     span.text-primary &nbsp; #{postgrado.nombre}
                 p.lead.text-center
-                    span.text-muted &nbsp; Informacion general del Postgrado
+                    span.text-muted &nbsp; Información general del Postgrado
                 .well.bs-component
                     form(method="POST", action="/postgrado/#{postgrado.id}").form-horizontal
                         input(type="hidden", name="_method", value="PUT")
@@ -48,7 +48,7 @@ block content
                                         span.input-group-addon
                                             i.fa.fa-bookmark
                                         input(type="text", name="regiscal", value="#{postgrado.registro_cal}", required).form-control
-                                    p.lead.text-muted Numero de registro de guia, del documento de aceptacion de los permisos que otorga para el ofrecimiento del postgrado
+                                    p.lead.text-muted Número de registro de guia, del documento de aceptacion de los permisos que otorga para el ofrecimiento del postgrado
 
                             .form-group
                                 label(for="inputNombre", class="col-lg-2 control-label") Nombre
