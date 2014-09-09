@@ -4,25 +4,25 @@ h1 Editor de Directores
 
 form(method="PUT", action="/director/edit")
     legend
-        | nombres del director
+        | Nombres del director
         input(type="text", name="nombres", autocomplete="off", required)
     legend
         | apellidos del director
         input(type="text", name="apellidos", autocomplete="off", required)
     legend
-        | tipo de documento
+        | Tipo de documento
         select(name="tipodoc")
-            option(value="Cedula de ciudadania") Cedula de ciudadania
+            option(value="Cédula de ciudadanía") Cédula de ciudadanía
             option(value="Pasaporte") Pasaporte
-            option(value="Cedula de Extranjeria") Cedula de Extranjeria
+            option(value="Cédula de Extranjería") Cédula de Extranjería
     legend
-        | numero de documento
+        | Número de documento
         input(type="text", name="numdoc", autocomplete="off", required)
     legend
         | Email
         input(type="email", name="email", autocomplete="off", required)
     legend
-        | telefono
-        input(type="number", name="telefono", autocomplete="off", required)
+        | teléfono
+        input(type="number", name="teléfono", autocomplete="off", required)
 
 br
