@@ -32,7 +32,7 @@ block content
                     span.text-primary &nbsp; #{programa.nombre}
                 p.lead.text-center
                     span.text-info Paso #1:
-                    span.text-muted &nbsp; Informacion general del Postgrado a registrar
+                    span.text-muted &nbsp; Información general del Postgrado a registrar
                 .well.bs-component
                     form(method="POST", action="/postgrado/newlinfo").form-horizontal
                         input(type="hidden", name="id", value="#{programa.id}")
@@ -47,7 +47,7 @@ block content
                                         span.input-group-addon
                                             i.fa.fa-mortar-board
                                         input(type="text", name="nombre", placeholder="Digite Nombre del postgrado", autocomplete="off", required, autofocus=).form-control
-                                    p.lead Nombre de la titulacion que obtendra el estudiante al termino del postgrado
+                                    p.lead Nombre de la titulación que obtendrá el estudiante al termino del postgrado
 
                             .form-group
                                 label(for="inputTipo", class="col-lg-2 control-label") Tipo
@@ -59,7 +59,7 @@ block content
                                             option(value="Máestria") Máestria
                                             option(value="Especialización") Especialización
                                             option(value="Doctorado") Doctorado
-                                    p.lead Tipo de estudio al que el postgrado pertenece y tipo de titulacion que obtendra el estudiante
+                                    p.lead Tipo de estudio al que el postgrado pertenece y tipo de titulación que obtendrá el estudiante
                             .form-group
                                 .col-lg-10.col-lg-offset-2
                                     a(href="/director/profile").btn.btn-default.margin-right-1

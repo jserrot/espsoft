@@ -18,7 +18,7 @@ block content
                     li
                         a(href="/logout")
                             i.fa.fa-power-off
-                            | &nbsp; Cerrar Sesion
+                            | &nbsp; Cerrar Sesión
 
     .row.bg-black.fix-top.margin-botton
         .container
@@ -32,7 +32,7 @@ block content
                 p.text-center
                     a(href="/director/profile").btn.btn-default.btn-xs
                         i.fa.fa-chevron-circle-left
-                        | &nbsp; volver al programa
+                        | &nbsp; Regresar al programa
 
 
             .col-lg-6
@@ -51,7 +51,7 @@ block content
                                 h2.text-center
                                     span.label.label-danger.text-size #{numcoh}
                             td
-                                p.text-center Pensums
+                                p.text-center Pensúms
                                 h2.text-center
                                     span.label.label-info.text-size #{numpen}
                             td
@@ -59,7 +59,7 @@ block content
                                 h2.text-center
                                     span.label.label-primary.text-size #{numes}
                             td
-                                p.text-center Preinscritos
+                                p.text-center Pre-inscritos
                                 h2.text-center
                                     span.label.label-warning.text-size #{numpre}
             .col-lg-3
@@ -67,7 +67,7 @@ block content
 
                     span.lead
                         i.fa.fa-info-circle
-                        |&nbsp; Informacion
+                        |&nbsp; Información
                 .well.well-lg
                     p
                         strong Tipo de Postgrado
@@ -80,7 +80,7 @@ block content
                     p.text-center
                         a(href="/postgrado/#{postgrado.id}/edit").btn.btn-info.btn-xs
                             i.fa.fa-eye
-                            |&nbsp; Ver Informacion
+                            |&nbsp; Ver Información
 
     .row
         .container
@@ -91,11 +91,11 @@ block content
                         span.badge.pull-right.badge-fix #{numpre}
                         h5
                             i.fa.fa-pencil-square
-                            |&nbsp; Solicitudes de Inscripcion
+                            |&nbsp; Solicitudes de Inscripción
 
 
                     .panel-body
-                        p.lead Lista de Interezados que desean realizar el postgrado y obtener informacion a cerca del mismo
+                        p.lead Lista de Interezados en realizar el postgrado y conocer información a cerca del mismo
 
                         .scroll-list
                             -if(inscritos[0]){
@@ -122,7 +122,7 @@ block content
                                                     i.fa.fa-search
                                         -count++
                             -}else{
-                                p.text-center.text-info no hay solicitudes de inscripcion para el postgrado
+                                p.text-center.text-info no hay solicitudes de inscripción para el postgrado
                             -}
                         legend
                         p.text-center
@@ -173,10 +173,10 @@ block content
                         span.badge.pull-right.badge-fix #{numpen}
                         h5
                             i.fa.fa-book
-                            |&nbsp; Pensums
+                            |&nbsp; Pensúms
 
                     .panel-body
-                        p.lead Pensums que rigen el Postgrado
+                        p.lead Pensúms que rigen el Postgrado
 
                         .scroll-list
                             -if (pensums[0]){
@@ -193,13 +193,13 @@ block content
                                                     i.fa.fa-search
                                         -count++
                             -}else{
-                                p.text-center.text-info No hay Pensums en el sistema
+                                p.text-center.text-info No hay Pensúms en el sistema
                             -}
                         legend
                         p.text-center
                             a(href="/pensum/#{postgrado.id}/new").btn.btn-default
                                 i.fa.fa-plus-square
-                                | &nbsp; Nuevo Pensum
+                                | &nbsp; Nuevo Pensúm
 
 
 
